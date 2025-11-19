@@ -13,6 +13,11 @@ jobs:
         # Получение кода из репозитория
       - name: Checkout code  
         uses: actions/checkout@v3
+
+      - name: Create versioned deployment
+        run: |
+            mkdir -p public/v${{ github.event.release.tag_name }}
+            cp -r *.html ru/ en/ public/v${{ github.event.release.tag_name }}/
         
         # Публикация на GitHub Pages
       - name: Deploy to GitHub Pages  
