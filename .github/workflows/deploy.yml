@@ -1,0 +1,21 @@
+# Деплой на GitHub Pages
+name: Deploy to GitHub Pages  
+
+on:
+  release:
+    # Запускается при создании релиза
+    types: [published]  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+        # Получение кода из репозитория
+      - name: Checkout code  
+        uses: actions/checkout@v3
+        
+        # Публикация на GitHub Pages
+      - name: Deploy to GitHub Pages  
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
