@@ -18,9 +18,11 @@ jobs:
         run: |
             mkdir -p public/v${{ github.event.release.tag_name }}
             cp -r *.html ru/ en/ public/v${{ github.event.release.tag_name }}/
+            cp -r *.html ru/ en/ ./
         
         # Публикация на GitHub Pages
       - name: Deploy to GitHub Pages  
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
