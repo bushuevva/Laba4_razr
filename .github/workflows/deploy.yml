@@ -11,12 +11,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Create versioned deployment
-        run: |
-          cp -r *.html ru/ en/ ./
-          mkdir -p public/v${{ github.event.release.tag_name }}
-          cp -r *.html ru/ en/ public/v${{ github.event.release.tag_name }}/
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
